@@ -1,5 +1,4 @@
 # setup.py
-setup_content = '''
 from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -13,7 +12,7 @@ setup(
     description="A Flask extension for smart flash messages with toast and popup support",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/flask-smartflash",
+    url="https://github.com/chimenmagoodness/flask-smartflash.git",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -34,4 +33,3 @@ setup(
     ],
     keywords="flask flash messages toast popup notifications",
 )
-'''

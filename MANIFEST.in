@@ -1,0 +1,10 @@
+include README.md
+include LICENSE
+include CHANGELOG.md
+include requirements.txt
+include requirements-dev.txt
+recursive-include smartflash *.py
+recursive-include examples *.py *.html
+recursive-include tests *.py
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]

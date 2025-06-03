@@ -1,0 +1,98 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flask-smartflash"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+description = "A modern Flask extension for beautiful flash messages with toast notifications and modal popups"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.7" # Updated based on common Flask practices and Python 3.6 EOL
+classifiers = [
+    "Development Status :: 5 - Production/Stable", # Consider "3 - Alpha" or "4 - Beta" for initial release
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Framework :: Flask",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: User Interfaces",
+]
+keywords = ["flask", "flash", "messages", "toast", "popup", "notifications", "ui"]
+dependencies = [
+    "Flask>=2.0.0", # Updated Flask version for modern context
+]
+dynamic = ["version"] # Keep this for setuptools_scm
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-flask>=1.0",
+    "black>=21.0",
+    "flake8>=3.8",
+    "coverage>=5.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/flask-smartflash"
+Documentation = "https://github.com/yourusername/flask-smartflash#readme"
+Repository = "https://github.com/yourusername/flask-smartflash"
+"Bug Reports" = "https://github.com/yourusername/flask-smartflash/issues"
+Changelog = "https://github.com/yourusername/flask-smartflash/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+# By default, setuptools will use find_packages(). If 'smartflash' is your only
+# top-level package, this is explicit and fine. If you want automatic discovery
+# of all packages (e.g., smartflash, smartflash.subpackage), you can omit this
+# or use: packages = { find = {} }
+packages = ["smartflash"]
+include-package-data = true
+
+# --- REMOVE THIS SECTION IF USING SETUPSCOPE FOR VERSIONING ---
+# [tool.setuptools.dynamic]
+# version = {attr = "smartflash.__version__"}
+# ---------------------------------------------------------------
+
+# Optional: Explicitly configure setuptools_scm to write version to _version.py
+[tool.setuptools_scm]
+write_to = "smartflash/_version.py" # Ensure this path is correct relative to your project root.
+write_to_template = "__version__ = '{version}'" # To get a simpler __version__ definition
+
+[tool.black]
+line-length = 88
+target-version = ['py37'] # Changed to py37 as min Flask version is 2.0.0 which requires >=3.7
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.coverage.run]
+source = ["smartflash"]
+omit = ["*/tests/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]
