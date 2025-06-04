@@ -15,16 +15,16 @@ A modern Flask extension for displaying beautiful flash messages with support fo
 ## Preview Images
 
 ### Toasts:
-![SmartFlash Toast Preview  Success Image](images/taost success.PNG)
-![SmartFlash Toast Preview  Error Image](images/toast error.PNG)
-![SmartFlash Toast Preview  Info Image](images/toast info.PNG)
-![SmartFlash Toast Preview  Warning Image](toast warning.PNG)
+![SmartFlash Toast Preview  Success Image](images/taost%20success.PNG)
+![SmartFlash Toast Preview  Error Image](images/toast%20error.PNG)
+![SmartFlash Toast Preview  Info Image](images/toast%20info.PNG)
+![SmartFlash Toast Preview  Warning Image](toast%20warning.PNG)
 
 ### Pop Ups:
-![SmartFlash Popup Preview  Success Image](images/popup success.PNG)
-![SmartFlash Popup Preview  Error Image](images/popup error.PNG)
-![SmartFlash Popup Preview  Info Image](images/popup info.PNG)
-![SmartFlash Popup Preview  Warning Image](images/popup warnings.PNG)
+![SmartFlash Popup Preview  Success Image](images/popup%20success.PNG)
+![SmartFlash Popup Preview  Error Image](images/popup%20error.PNG)
+![SmartFlash Popup Preview  Info Image](images/popup%20info.PNG)
+![SmartFlash Popup Preview  Warning Image](images/popup%20warnings.PNG)
 
 
 ## Installation
