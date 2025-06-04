@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="padding: 50px; text-align: center;">
+    <h1>SmartFlash Demo</h1>
+
+    <h2>Toast Notifications</h2>
+    <a href="/toast/success" class="btn">Success Toast</a>
+    <a href="/toast/error" class="btn">Error Toast</a>
+    <a href="/toast/warning" class="btn">Warning Toast</a>
+    <a href="/toast/info" class="btn">Info Toast</a>
+
+    <h2>Modal Popups</h2>
+    <a href="/popup/success" class="btn">Success Popup</a>
+    <a href="/popup/error" class="btn">Error Popup</a>
+    <a href="/popup/warning" class="btn">Warning Popup</a>
+    <a href="/popup/info" class="btn">Info Popup</a>
+
+    <h2>Calling by Function</h2>
+    <a href="{{ url_for('success') }}" class="btn">Success Toast </a>
+    <a href="{{ url_for('error') }}" class="btn">Error Popup </a>
+</div>
+
+<style>
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+    .btn:hover {
+        background: #0056b3;
+    }
+</style>
+{% endblock %}
