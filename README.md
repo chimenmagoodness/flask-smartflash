@@ -15,17 +15,16 @@ A modern Flask extension for displaying beautiful flash messages with support fo
 ## Preview Images
 
 ### Toasts:
-![SmartFlash Toast Preview  Success Image](https://github.com/chimenmagoodness/flask-smartflash.git/images/taost-success.png)
-![SmartFlash Toast Preview  Error Image](https://github.com/chimenmagoodness/flask-smartflash.git/images/toast-error.png)
-![SmartFlash Toast Preview  Info Image](https://github.com/chimenmagoodness/flask-smartflash.git/images/toast-info.png)
-![SmartFlash Toast Preview  Warning Image](https://github.com/chimenmagoodness/flask-smartflash.gittoast-warning.png)
+![SmartFlash Toast Success](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/toast-success.png)
+![SmartFlash Toast Error](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/toast-error.png)
+![SmartFlash Toast Info](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/toast-info.png)
+![SmartFlash Toast Warning](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/toast-warning.png)
 
 ### Pop Ups:
-![SmartFlash Popup Preview  Success Image](https://github.com/chimenmagoodness/flask-smartflash.git/images/popup-success.png)
-![SmartFlash Popup Preview  Error Image](https://github.com/chimenmagoodness/flask-smartflash.git/images/popup-error.png)
-![SmartFlash Popup Preview  Info Image](https://github.com/chimenmagoodness/flask-smartflash.git/images/popup-info.png)
-![SmartFlash Popup Preview  Warning Image](https://github.com/chimenmagoodness/flask-smartflash.git/images/popup-warnings.png)
-
+![SmartFlash Popup Success](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/popup-success.png)
+![SmartFlash Popup Error](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/popup-error.png)
+![SmartFlash Popup Info](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/popup-info.png)
+![SmartFlash Popup Warning](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/popup-warnings.png)
 
 ## Installation
 
