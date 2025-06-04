@@ -12,6 +12,21 @@ A modern Flask extension for displaying beautiful flash messages with support fo
 - 🔧 **Easy Integration**: Drop-in replacement for Flask's built-in flash system
 - 🎪 **No Dependencies**: Pure CSS and JavaScript, no external libraries required
 
+## Preview Images
+
+### Toasts:
+![SmartFlash Toast Preview  Success Image](images/taost success.PNG)
+![SmartFlash Toast Preview  Error Image](images/toast error.PNG)
+![SmartFlash Toast Preview  Info Image](images/toast info.PNG)
+![SmartFlash Toast Preview  Warning Image](toast warning.PNG)
+
+### Pop Ups:
+![SmartFlash Popup Preview  Success Image](images/popup success.PNG)
+![SmartFlash Popup Preview  Error Image](images/popup error.PNG)
+![SmartFlash Popup Preview  Info Image](images/popup info.PNG)
+![SmartFlash Popup Preview  Warning Image](images/popup warnings.PNG)
+
+
 ## Installation
 
 ### Method 1: Install from PyPI (Recommended)
