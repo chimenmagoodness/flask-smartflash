@@ -47,11 +47,12 @@ pip install Flask
 ### 1. Basic Setup
 
 ```python
+
 from flask import Flask, render_template, redirect, url_for
-from smartflash import SmartFlash, flash
+from smartflash import SmartFlash
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-here'
+app.secret_key = 'your-secret-key'
 
 # Initialize SmartFlash
 smartflash = SmartFlash(app)
@@ -60,18 +61,51 @@ smartflash = SmartFlash(app)
 def index():
     return render_template('index.html')
 
+@app.route('/toast/<category>')
+def show_toast(category):
+    messages = {
+        'success': 'Operation completed successfully!',
+        'error': 'An error occurred while processing your request.',
+        'warning': 'Please check your input and try again.',
+        'info': 'Here is some useful information for you.'
+    }
+    
+    smartflash(messages.get(category, 'Default message'), category, method='toast', 
+          position='top-right', duration=4000, animation='fadeIn', exit_animation='zoomOut')
+    return redirect(url_for('index'))
+
+@app.route('/popup/<category>')
+def show_popup(category):
+    messages = {
+        'success': 'Your changes have been saved successfully!',
+        'error': 'Unable to process your request. Please try again later.',
+        'warning': 'Are you sure you want to continue with this action?',
+        'info': 'This is an informational message with important details.'
+    }
+    
+    smartflash(messages.get(category, 'Default message'), category, method='popup',
+          title=category.capitalize() + ' Message',
+          animation='bounceIn',
+          confirm_text='Got it!')
+    return redirect(url_for('index'))
+
+
+# or you can use this method
+
 @app.route('/success')
 def success():
-    flash('Operation completed successfully!', 'success', method='toast')
+    smartflash( 'Operation completed successfully!', 'success', method='toast')
     return redirect(url_for('index'))
 
 @app.route('/error')
 def error():
-    flash('An error occurred!', 'error', method='popup')
+    smartflash('An error occurred!', 'error', method='popup')
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
 ```
 
 ### 2. Template Setup
@@ -79,21 +113,23 @@ if __name__ == '__main__':
 Create `templates/base.html`:
 
 ```html
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SmartFlash Demo</title>
     {{ smartflash_include_css() }}
-</head>
-<body>
+  </head>
+  <body>
     {% block content %}{% endblock %}
-    
+
     <!-- Include SmartFlash messages -->
     {{ smartflash_render() }}
-</body>
+  </body>
 </html>
+
 ```
 
 Create `templates/index.html`:
@@ -104,36 +140,42 @@ Create `templates/index.html`:
 {% block content %}
 <div style="padding: 50px; text-align: center;">
     <h1>SmartFlash Demo</h1>
-    
+
     <h2>Toast Notifications</h2>
     <a href="/toast/success" class="btn">Success Toast</a>
     <a href="/toast/error" class="btn">Error Toast</a>
     <a href="/toast/warning" class="btn">Warning Toast</a>
     <a href="/toast/info" class="btn">Info Toast</a>
-    
+
     <h2>Modal Popups</h2>
     <a href="/popup/success" class="btn">Success Popup</a>
     <a href="/popup/error" class="btn">Error Popup</a>
     <a href="/popup/warning" class="btn">Warning Popup</a>
     <a href="/popup/info" class="btn">Info Popup</a>
+
+    <h2>Calling by Function</h2>
+    <a href="{{ url_for('success') }}" class="btn">Success Toast </a>
+    <a href="{{ url_for('error') }}" class="btn">Error Popup </a>
 </div>
 
 <style>
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-.btn:hover {
-    background: #0056b3;
-}
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+    .btn:hover {
+        background: #0056b3;
+    }
 </style>
 {% endblock %}
+
 ```
 
 ## API Reference
@@ -161,8 +203,40 @@ Flash a message using SmartFlash.
 **Parameters:**
 - `message` (str): The message to display
 - `category` (str): Message category ('success', 'error', 'warning', 'info')
-- `method` (str): Display method ('toast' or 'popup')
-- `**kwargs`: Additional customization options
+- `method` (`str`, optional): Display method. Either `'toast'` or `'popup'`. Defaults to `'toast'`.
+- `position` (`str`, optional): Position of the toast on screen (e.g., `'top-right'`, `'bottom-left'`). Only applicable for toast. Defaults to `'top-right'`.
+- `duration` (`int`, optional): Duration in milliseconds before the message disappears. Defaults to `4000`.
+- `animation` (`str`, optional): Entry animation class. Defaults to `'fadeIn'`.
+- `exit_animation` (`str`, optional): Exit animation class. Defaults to `'fadeOut'`.
+- `**kwargs`: Additional customization options (e.g., `overlay_click_close=True`, `close_button=True`).
+
+**Available Animations:**
+
+You can use any of the following animation names for the `animation` or `exit_animation` parameters:
+
+- `fadeIn`
+- `slideIn`
+- `bounceIn`
+- `zoomIn`
+- `rotateIn`
+- `flipIn`
+- `elasticIn`
+- `slideInLeft`
+- `slideInRight`
+- `expandIn`
+- `glowIn`
+- `swingIn`
+- `rollIn`
+- `morphIn`
+
+
+> 🔁 For exit animations, You can use any of the following animation names for the `exit_animation` parameters.
+- `fadeOut`
+- `slideOut`
+- `zoomOut`
+
+
+---
 
 ### Flash Methods
 
@@ -188,6 +262,7 @@ flash('Message', 'error', method='popup',
 - `title`: Custom title for the popup
 - `animation`: 'fadeIn', 'slideIn', 'bounceIn'
 - `confirm_text`: Text for the confirm button
+- exit_animation` (`str`, optional): Exit animation class. Defaults to `'fadeOut'`.
 
 ### Template Functions
 
@@ -204,12 +279,21 @@ Include SmartFlash CSS styles in your template.
 Render SmartFlash messages in your template.
 
 ```html
-{{ smartflash_render() }}
+<head>
+    {{ smartflash_include_css() }}
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+
+    <!-- Include SmartFlash messages -->
+    {{ smartflash_render() }}
+  </body>
 ```
 
 ## Configuration
 
-Add these configuration options to your Flask app:
+This is optional but you can add these configuration options to your Flask app:
 
 ```python
 app.config['SMARTFLASH_DEFAULT_METHOD'] = 'toast'  # Default: 'toast'
@@ -238,9 +322,9 @@ You can override the default styles by adding your own CSS after including Smart
 ```python
 @app.route('/multiple')
 def multiple():
-    flash('First message', 'info', method='toast', position='top-left')
-    flash('Second message', 'success', method='toast', position='top-right')
-    flash('Important alert', 'warning', method='popup')
+    smartflash('First message', 'info', method='toast', position='top-left')
+    smartflash('Second message', 'success', method='toast', position='top-right')
+    smartflash('Important alert', 'warning', method='popup')
     return redirect(url_for('index'))
 ```
 
@@ -252,11 +336,11 @@ def process():
     try:
         # Your processing logic here
         result = some_operation()
-        flash('Operation successful!', 'success', method='toast')
+        smartflash('Operation successful!', 'success', method='toast')
     except ValueError as e:
-        flash(f'Validation error: {str(e)}', 'warning', method='popup')
+        smartflash(f'Validation error: {str(e)}', 'warning', method='popup')
     except Exception as e:
-        flash('An unexpected error occurred.', 'error', method='popup')
+        smartflash('An unexpected error occurred.', 'error', method='popup')
     
     return redirect(url_for('index'))
 ```
@@ -284,7 +368,7 @@ def api_action():
     except Exception as e:
         return jsonify({
             'success': False,
-            'flash': {
+            'smartflash': {
                 'message': 'Action failed!',
                 'category': 'error',
                 'method': 'popup'
@@ -323,8 +407,12 @@ SmartFlash works with all modern browsers:
 
 1. Make sure you've included the CSS and render functions in your template:
 ```html
-{{ smartflash_include_css() }}
-{{ smartflash_render() }}
+<!-- Make sure your base template has this  -->
+{{ smartflash_include_css() }} <!-- Make sure this is in the head tag  -->
+{{ smartflash_render() }} <!-- And this is in the body  -->
+
+<!-- and you have extended your base.html in all your html.  -->
+{% extends "base.html" %}
 ```
 
 2. Ensure your Flask app has a secret key configured:
