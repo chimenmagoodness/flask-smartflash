@@ -15,7 +15,7 @@ A modern Flask extension for displaying beautiful flash messages with support fo
 ## Preview Images
 
 ### Toasts:
-![SmartFlash Toast Success](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/toast-success.png)
+![SmartFlash Toast Success](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/master/images/toast-success.png)
 ![SmartFlash Toast Error](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/toast-error.png)
 ![SmartFlash Toast Info](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/toast-info.png)
 ![SmartFlash Toast Warning](https://raw.githubusercontent.com/chimenmagoodness/flask-smartflash/main/images/toast-warning.png)
@@ -38,7 +38,7 @@ pip install flask-smartflash
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/flask-smartflash.git
+git clone [flask-smartflash Repo](https://github.com/chimenmagoodness/flask-smartflash.git)
 cd flask-smartflash
 ```
 
