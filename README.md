@@ -46,7 +46,8 @@ pip install flask-smartflash
 pip install flask-smartflash==1.0.1
 ```
 
-PyPi Docs [PyPi Docs for flask smartflash](https://pypi.org/project/flask-smartflash/1.0.1/)
+### PyPi Docs. 
+[PyPi Docs for flask smartflash](https://pypi.org/project/flask-smartflash/1.0.1/)
 
 ### Method 2: Install from Source
 
