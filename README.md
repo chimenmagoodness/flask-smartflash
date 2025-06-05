@@ -41,12 +41,18 @@ A modern Flask extension for displaying beautiful flash messages with support fo
 ```bash
 pip install flask-smartflash
 ```
+### or 
+```bash
+pip install flask-smartflash==1.0.1
+```
+
+PyPi Docs ![PyPi Docs for flask smartflash](https://pypi.org/project/flask-smartflash/1.0.1/)
 
 ### Method 2: Install from Source
 
 1. Clone the repository:
 ```bash
-git clone [flask-smartflash Repo](https://github.com/chimenmagoodness/flask-smartflash.git)
+git clone https://github.com/chimenmagoodness/flask-smartflash.git
 cd flask-smartflash
 ```
 
