@@ -15,24 +15,26 @@ A modern Flask extension for displaying beautiful flash messages with support fo
 ## Preview Images
 
 ### Toasts:
-![SmartFlash Toast Preview Success Image](/images/taost-success.png)
 
-![SmartFlash Toast Preview Error Image](/images/toast-error.png)
 
-![SmartFlash Toast Preview Info Image](/images/toast-info.png)
+![taost-success](https://github.com/user-attachments/assets/e61688a7-a7ff-4988-8412-9f2f1c559891)
 
-![SmartFlash Toast Preview Warning Image](/images/toast-warning.png)
+![toast-error](https://github.com/user-attachments/assets/d9193ffa-f847-49fd-ad67-191e672a4d53)
+
+![toast-info](https://github.com/user-attachments/assets/e1349a2d-0eef-4908-b184-d196efc9dec2)
+
+![toast-warning](https://github.com/user-attachments/assets/5a05abc2-f51d-4156-989d-f20da1eb9b96)
 
 
 ### Pop Ups:
-![SmartFlash Popup Preview Success Image](/images/popup-success.png)
 
-![SmartFlash Popup Preview Error Image](/images/popup-error.png)
+![popup-success](https://github.com/user-attachments/assets/68cf3db5-b9d1-4bf5-9a5b-f97756cd9ec5)
 
-![SmartFlash Popup Preview Info Image](/images/popup-info.png)
+![popup-error](https://github.com/user-attachments/assets/b8007b07-b394-47ed-b5db-8cdf9981fb76)
 
-![SmartFlash Popup Preview Warning Image](/images/popup-warnings.png)
+![popup-warnings](https://github.com/user-attachments/assets/817a8ff1-e2f8-40c4-9455-d602e482638d)
 
+![popup-info](https://github.com/user-attachments/assets/efeb3fb3-428f-4b63-8748-48ab7a5ba082)
 
 ## Installation
 
@@ -71,9 +73,15 @@ pip install -e .
 pip install Flask
 ```
 
-## Quick Start
+## ⚡ Quickstart
 
 ### 1. Basic Setup
+
+> ✏️ **Note:**  
+> You **do not** need to call `smartflash.init_app(app)` —  
+> it auto-registers itself and injects everything automatically.
+>
+```
 
 ```python
 
@@ -83,8 +91,6 @@ from smartflash import SmartFlash
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'
 
-# Initialize SmartFlash
-smartflash = SmartFlash(app)
 
 @app.route('/')
 def index():
@@ -209,23 +215,7 @@ Create `templates/index.html`:
 
 ## API Reference
 
-### SmartFlash Class
-
-#### `SmartFlash(app=None)`
-
-Initialize the SmartFlash extension.
-
-**Parameters:**
-- `app` (Flask, optional): Flask application instance
-
-#### `init_app(app)`
-
-Initialize the extension with a Flask app (for factory pattern).
-
-**Parameters:**
-- `app` (Flask): Flask application instance
-
-#### `flash(message, category='info', method=None, **kwargs)`
+#### `smartflash(message, category='info', method=None, **kwargs)`
 
 Flash a message using SmartFlash.
 
@@ -272,7 +262,7 @@ You can use any of the following animation names for the `animation` or `exit_an
 #### Toast Notifications
 
 ```python
-flash('Message', 'success', method='toast', 
+smartflash('Message', 'success', method='toast', 
       position='top-right', duration=5000)
 ```
 
@@ -283,7 +273,7 @@ flash('Message', 'success', method='toast',
 #### Modal Popups
 
 ```python
-flash('Message', 'error', method='popup',
+smartflash('Message', 'error', method='popup',
       title='Error', animation='bounceIn', confirm_text='OK')
 ```
 
